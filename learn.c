@@ -20,6 +20,11 @@ void freeArray(int rows, double** mat){
     free(mat);
 }
 
+/*
+  Splits the  test value line and converts the comma seperated
+  strings to decimal values
+*/
+
 void easySplit(int col, char *row, double* colmatX){
     int i = 0;
     const char s[2] = ",";
@@ -50,6 +55,11 @@ double** fileToMatTest(int examples,int attributes, FILE * test){
     }
     return matTest;
 }
+
+/*
+  splits the given line from a file to corrsesponding decimal value
+  and stores it into a matrix
+*/
 
 void arraySplit(int col, char *row, double *colmatX){
     int i = 0;
@@ -94,9 +104,10 @@ double ** fileToMatX(int examples,int attributes,FILE * train){
 
 /*
   Gets the last number of a string seperated by commas
+  Converts that number to a decimal
 */
 
-void getLastCol(char *row, int attributes, double* matY){
+void getYVals(char *row, int attributes, double* matY){
     int i = 0;
     const char s[2] = ",";
 
@@ -129,7 +140,7 @@ double** fileToMatY(int examples,int attributes, FILE * train){
 
     for( row = 0; row < examples;row++){
         fgets(single,150,train);
-        getLastCol(single,attributes,matY[row]);
+        getYVals(single,attributes,matY[row]);
     }
     return matY;
 }
